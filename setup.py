@@ -3,7 +3,7 @@ import pybind11
 import sys
 import os
 
-compile_args = ["/O2"] if sys.platform == "win32" else ["-O3"]
+compile_args = ["/O2"] if sys.platform == "win32" else ["-O3"] # chooses the operating system specific optimization flag
 
 ext_modules = [
     Extension(

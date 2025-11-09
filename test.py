@@ -22,3 +22,9 @@ end = time.time()
 print("Python Time taken:", end - start)    
 
 
+
+# ```bash
+# python setup.py build_ext --inplace
+# ```
+# This creates:
+# dsapp.cp310-win_amd64.pyd

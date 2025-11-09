@@ -29,7 +29,7 @@
 
 **DSA++** was built to explore how libraries like **NumPy** and **PyTorch** connect Python with C++ for extreme performance.
 
-It implements core **data structures and algorithms** in C++ using STL, then exposes them to Python through **PyBind11 bindings**, producing a compiled `.pyd` module you can import just like a normal Python library.
+It implements core **data structures and algorithms** in C++ using STL, then exposes them to Python through **PyBind11 bindings**, automatically producing a compiled `.pyd` for windows(very similar to Dynamic Link Library) or .so file in linux/mac module you can import just like a normal Python library.
 
 ```python
 from dsapp import HashMap, Stack, Queue, quick_sort 
@@ -87,7 +87,7 @@ dsapp.cp310-win_amd64.pyd
 Now you can directly import it in Python:
 
 ```python 
-from dsapp import Stack, Queue, HashMap, quick_sort]
+from dsapp import Stack, Queue, HashMap, quick_sort
 from dsapp import Stack
 
 s = Stack()
@@ -103,8 +103,6 @@ m.put("x", 42)
 print(m.get("x"))          # 42
 print(m.contains("x"))     # True
 print(m.keys())            # ['x']
-
-from dsapp import Queue, quick_sort
 
 q = Queue()
 q.push(5)
@@ -144,4 +142,7 @@ print("Sum in python:", sum(123456789))
 end = time.time()
 print("Python Time taken:", end - start)    
 ```
+
+![Alt text](relative%20path/to/image.png?raw=true "Title")
+
 **This c++ peforms 200x faster than python but in average it performs 5-6x faster than python**

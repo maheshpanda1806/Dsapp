@@ -1,26 +1,24 @@
-from dsapp import HashMap, Stack, Queue, quick_sort
+# built to benchmark sum of n number in C++ vs python
 
-# HashMap
-h = HashMap()
-h.put("a", 1)
-h.put("b", 2)
-print("HashMap keys:", h.keys())
+import sum_module
+import dsapp
+import time
 
-# Stack
-s = Stack()
-s.push(10)
-s.push(20)
-print("Stack top:", s.top())
-print("Stack pop:", s.pop())
+def sum(n):
+    sum =0
+    for i in range(n):
+        sum += i
+    return sum
 
-# Queue
-q = Queue()
-q.push(5)
-q.push(10)
-print("Queue front:", q.front())
-print("Queue pop:", q.pop())
 
-# Sort
-arr = [5, 1, 4, 2, 3]
-quick_sort(arr)
-print("Sorted:", arr)
+start = time.time()
+print("Sum in C++:", sum_module.compute_sum(123456789))
+end = time.time()
+print("C++ Time taken:", end - start)
+
+start = time.time()
+print("Sum in python:", sum(123456789)) 
+end = time.time()
+print("Python Time taken:", end - start)    
+
+

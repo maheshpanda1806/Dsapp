@@ -32,7 +32,8 @@
 It implements core **data structures and algorithms** in C++ using STL, then exposes them to Python through **PyBind11 bindings**, producing a compiled `.pyd` module you can import just like a normal Python library.
 
 ```python
-from dsapp import HashMap, Stack, Queue, quick_sort
+from dsapp import HashMap, Stack, Queue, quick_sort 
+```
 
 ## Folder Structure
 DSA++/
@@ -59,7 +60,7 @@ DSA++/
 └── README.md
 
 
----
+
 
 ## Build Instructions
 
@@ -72,19 +73,75 @@ DSA++/
 Install PyBind11:
 ```bash
 pip install pybind11
-
+```
 Build the module
-
 From the project root:
 
+```bash
 python setup.py build_ext --inplace
-
-
+```
 This creates:
-
 dsapp.cp310-win_amd64.pyd
 
 
 Now you can directly import it in Python:
 
-from dsapp import Stack, Queue, HashMap, quick_sort
+```python 
+from dsapp import Stack, Queue, HashMap, quick_sort]
+from dsapp import Stack
+
+s = Stack()
+s.push(10)
+s.push(20)
+print(s.top())   
+s.pop()
+print(s.top())   
+
+
+m = HashMap()
+m.put("x", 42)
+print(m.get("x"))          # 42
+print(m.contains("x"))     # True
+print(m.keys())            # ['x']
+
+from dsapp import Queue, quick_sort
+
+q = Queue()
+q.push(5)
+q.push(10)
+print(q.front())   # 5
+
+arr = [5, 3, 9, 1]
+quick_sort(arr)
+print(arr)         # [1, 3, 5, 9]
+```
+
+## Performance Benchmark 
+
+ See test.py 
+
+```python 
+# built to benchmark sum of n number in C++ vs python
+
+import sum_module
+import dsapp
+import time
+
+def sum(n):
+    sum =0
+    for i in range(n):
+        sum += i
+    return sum
+
+
+start = time.time()
+print("Sum in C++:", sum_module.compute_sum(123456789))
+end = time.time()
+print("C++ Time taken:", end - start)
+
+start = time.time()
+print("Sum in python:", sum(123456789)) 
+end = time.time()
+print("Python Time taken:", end - start)    
+```
+**This c++ peforms 200x faster than python but in average it performs 5-6x faster than python**

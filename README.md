@@ -143,6 +143,6 @@ end = time.time()
 print("Python Time taken:", end - start)    
 ```
 
-![Alt text](relative%20path/to/image.png?raw=true "Title")
+![Description](./image.png)
 
 **This c++ peforms 200x faster than python but in average it performs 5-6x faster than python**
